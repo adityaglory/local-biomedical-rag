@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # 🧠 SERVICE 1: BACKEND (API & RAG Engine)
+  backend:
+    build: .
+    container_name: rag-backend
+    command: python api.py
+    ports:
+      - "8000:8000"
+    environment:
+      # Trik biar Docker bisa akses Ollama di Windows/WSL
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      # Kita mount folder db biar ingatan AI gak ilang pas restart
+      - ./chroma_db:/app/chroma_db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # 🎨 SERVICE 2: FRONTEND (Streamlit Dashboard)
+  frontend:
+    build: .
+    container_name: rag-frontend
+    command: streamlit run dashboard.py
+    ports:
+      - "8501:8501"
+    environment:
+      # Kasih tau frontend kalau backend ada di alamat ini
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend

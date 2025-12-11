@@ -1,0 +1,16 @@
+cat <<'EOF' > .gitignore
+# Sampah Python (Cache)
+__pycache__/
+*.pyc
+
+# Database Vektor (Gede banget, jangan di-upload)
+chroma_db/
+
+# Environment Variables (Rahasia)
+.env
+
+# Folder Virtual Environment & Editor
+venv/
+.vscode/
+.idea/
+EOF
