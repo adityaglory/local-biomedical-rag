@@ -22,25 +22,34 @@ Built with an End-to-End MLOps mindset, this project decouples the inference eng
    ollama pull llama3.2
    ```
    
-## Installation & Run
+### Installation & Run
 Clone this repository and launch the containerized stack:
 ```bash
-   docker compose up --build
+docker compose up --build
 ```
 The system will spin up two services:
 - Frontend Dashboard: http://localhost:8501
 - Backend API Docs: http://localhost:8000/docs
 
-## Project Structure
+## 📂 Project Structure
+
 ├── api.py           # FastAPI entry point
+
 ├── dashboard.py     # Streamlit frontend logic
+
 ├── rag_engine.py    # Core RAG logic (Chain, Retrieval, Prompting)
+
 ├── Dockerfile       # Container definition
+
 ├── docker-compose.yml # Service orchestration
+
 ├── requirements.txt # Python dependencies
+
 └── data/            # Source PDF documents
 
-## Key Feature
+## 🧠 Key Feature
 - Context-Aware Retrieval: Uses MMR/Similarity search with k=12 to handle long-context biomedical queries (e.g., extracting specific accuracy metrics from results sections).
 - Microservices Architecture: Frontend and Backend communicate via Docker internal networking.
 - Dockerized Environment: Eliminates "it works on my machine" issues.
+
+
