@@ -34,22 +34,14 @@ The system will spin up two services:
 ## 📂 Project Structure
 
 ├── api.py           # FastAPI entry point
-
 ├── dashboard.py     # Streamlit frontend logic
-
 ├── rag_engine.py    # Core RAG logic (Chain, Retrieval, Prompting)
-
 ├── Dockerfile       # Container definition
-
 ├── docker-compose.yml # Service orchestration
-
 ├── requirements.txt # Python dependencies
-
 └── data/            # Source PDF documents
 
 ## 🧠 Key Feature
 - Context-Aware Retrieval: Uses MMR/Similarity search with k=12 to handle long-context biomedical queries (e.g., extracting specific accuracy metrics from results sections).
 - Microservices Architecture: Frontend and Backend communicate via Docker internal networking.
 - Dockerized Environment: Eliminates "it works on my machine" issues.
-
-
