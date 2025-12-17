@@ -1,14 +1,11 @@
 import warnings
 import sys
-# Import library LangChain
 from langchain_classic.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 from langchain_community.vectorstores import Chroma
 from langchain_community.chat_models import ChatOllama
-# Pakai library khusus HuggingFace yang baru biar gak warning
 from langchain_huggingface import HuggingFaceEmbeddings
 
-# Bersihin warning terminal
 warnings.filterwarnings("ignore")
 
 # 1. SETUP CONFIG ⚙️
@@ -22,7 +19,6 @@ def start_rag_app():
     try:
         # A. Load Database Vektor (Memory)
         print("   📂 Memuat memori (Vector DB)...")
-        # Menggunakan HuggingFaceEmbeddings dari package baru
         embedding_function = HuggingFaceEmbeddings(model_name=MODEL_NAME)
         db = Chroma(persist_directory=DB_PATH, embedding_function=embedding_function)
         retriever = db.as_retriever(search_kwargs={"k": 3}) 
